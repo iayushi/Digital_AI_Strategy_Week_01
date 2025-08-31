@@ -29,7 +29,7 @@ import os
 
 os.environ["PYTORCH_ENABLE_META_TENSOR"] = "0"
 
-st.title("Digital AI strategy: Chat with Week 1 content")
+st.title("Course : Digital AI strategy")
 
 st.subheader ("Week 1: Foundations of IS, IT, Digital Platform, AI, and Business Strategy")
 
