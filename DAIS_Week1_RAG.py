@@ -40,6 +40,27 @@ provider = st.sidebar.selectbox(
 api_key = st.sidebar.text_input(f"{provider} API Key", type="password")
 model_name = st.sidebar.text_input("Model name (optional)", "")
 
+# Spacer to push warning downward (optional)
+st.sidebar.markdown("<br><br><br>", unsafe_allow_html=True)
+
+# AI warning box at bottom
+st.sidebar.markdown(
+    """
+    <div style='
+        border: 1px solid red;
+        background-color: #ffe6e6;
+        color: red;
+        padding: 10px;
+        font-size: 0.85em;
+        border-radius: 5px;
+        margin-top: 30px;
+    '>
+        ⚠️ This is an AI system. Use caution when interpreting its responses.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 ### Change the below chroma DB path for changing the the vector DB
 
 # Load prebuilt chroma DB path 
