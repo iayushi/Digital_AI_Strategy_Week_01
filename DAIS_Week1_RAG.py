@@ -55,7 +55,7 @@ st.sidebar.markdown(
         border-radius: 5px;
         margin-top: 30px;
     '>
-        ⚠️ This is an AI system. Use caution when interpreting its responses.
+        ⚠️ This is an AI chat bot. Use caution when interpreting its responses. ⚠️
     </div>
     """,
     unsafe_allow_html=True,
