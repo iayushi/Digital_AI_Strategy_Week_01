@@ -153,6 +153,7 @@ if model:
             3.  If a student asks a question that is not covered in the context, inform them that the question is outside the current topic of this session.
             4.  Suggest that they can search the web for more information if they are curious.
             5.  If a question is a duplicate, provide a more concise version of the previous answer.
+            6.  Do not provide any in-text citations in your response without including reference list in the response.
             Context:
             {context_text}
 
