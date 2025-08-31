@@ -29,36 +29,7 @@ import os
 
 os.environ["PYTORCH_ENABLE_META_TENSOR"] = "0"
 
-# st.title("Digital AI strategy: Chat with Week 1 content")
-# --- Sticky Title with Visible Rendering ---
-st.markdown(
-    """
-    <style>
-        .sticky-title {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            padding: 1rem 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-            border-bottom: 1px solid #ddd;
-            z-index: 1000;
-        }
-
-        /* Push main content down so it's not hidden behind the fixed title */
-        .block-container {
-            padding-top: 90px;
-        }
-    </style>
-
-    <div class="sticky-title">
-        🧠 Digital AI Strategy: Chat with Week 1 Content
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.title("Digital AI strategy: Chat with Week 1 content")
 
 st.subheader ("Week 1: Foundations of IS, IT, Digital Platform, AI, and Business Strategy")
 
