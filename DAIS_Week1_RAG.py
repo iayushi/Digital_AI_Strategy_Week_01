@@ -29,8 +29,38 @@ import os
 
 os.environ["PYTORCH_ENABLE_META_TENSOR"] = "0"
 
-st.title("Digital AI strategy: Chat with Week 1 content")
-st.subheader ("Foundations of IS, IT Digital Platform AI and Business Strategy")
+# st.title("Digital AI strategy: Chat with Week 1 content")
+# Inject a sticky title bar at the top
+st.markdown(
+    """
+    <style>
+        .fixed-title {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 15px 10px;
+            font-size: 26px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        /* Push content below the fixed header */
+        .main > div {
+            padding-top: 80px;
+        }
+    </style>
+
+    <div class="fixed-title">
+        Digital AI Strategy: Chat with Week 1 Content
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.subheader ("Week 1: Foundations of IS, IT, Digital Platform, AI, and Business Strategy")
 
 # Sidebar: Choose provider & keys
 provider = st.sidebar.selectbox(
