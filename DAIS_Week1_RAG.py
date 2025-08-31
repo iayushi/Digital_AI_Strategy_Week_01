@@ -68,7 +68,7 @@ if api_key:
         elif provider == "Groq":
             model = ChatGroq(
                 groq_api_key=api_key,
-                model_name=model_name or "llama3-8b-8192",
+                model_name=model_name or "llama-3.1-8b-instant",
                 temperature=0.7
             )
 
@@ -124,9 +124,13 @@ if model:
         question = kwargs["question"]
         context_text = "\n".join([d.page_content for d in ctx["texts"]])
         prompt_template = f"""
-            You are a helpful assistant for advance undergratuate students taking the Digital and AI strategy course.
-            Use the following context to answer thier questions answer the question based only on the following context in this prompt
-            
+            Role: You are a helpful assistant for advance undergratuate students taking the Digital and AI strategy course. Your purpose is to help students understand the provided lecture notes and examples.
+            Instructions:
+            1.  Answer question only using the provided context. Do not use outside knowledge.
+            2.  Maintain a polite and encouraging tone.
+            3.  If a student asks a question that is not covered in the context, inform them that the question is outside the current topic of this session.
+            4.  Suggest that they can search the web for more information if they are curious.
+            5.  If a question is a duplicate, provide a more concise version of the previous answer.
             Context:
             {context_text}
 
