@@ -29,8 +29,8 @@ import os
 
 os.environ["PYTORCH_ENABLE_META_TENSOR"] = "0"
 
-st.title("🧪 Chat with Thesis Document 🧪")
-st.subheader ("Determining Effects Of A Web-Based Teachers’ Professional Development Programme On Teaching Self-Efficacy Beliefs And Classroom Practice - Ketan Satish Deshmukh")
+st.title("Digital AI strategy: Chat with Week 1 content")
+st.subheader ("Foundations of IS, IT Digital Platform AI and Business Strategy")
 
 # Sidebar: Choose provider & keys
 provider = st.sidebar.selectbox(
@@ -40,8 +40,12 @@ provider = st.sidebar.selectbox(
 api_key = st.sidebar.text_input(f"{provider} API Key", type="password")
 model_name = st.sidebar.text_input("Model name (optional)", "")
 
-# Load prebuilt chroma DB path (you must download it from GitHub locally)
-PERSIST_DIRECTORY = "./chroma_db_v2"
+### Change the below chroma DB path for changing the the vector DB
+
+# Load prebuilt chroma DB path 
+PERSIST_DIRECTORY = "./Week_1_31Aug2025"
+
+### --------------------
 
 model = None
 
@@ -120,9 +124,8 @@ if model:
         question = kwargs["question"]
         context_text = "\n".join([d.page_content for d in ctx["texts"]])
         prompt_template = f"""
-            You are a helpful assistant.
-            Use the following context (which may include text, summary of tables, and image descriptions) to answer:
-            Answer the question based only on the following context
+            You are a helpful assistant for advance undergratuate students taking the Digital and AI strategy course.
+            Use the following context to answer thier questions answer the question based only on the following context in this prompt
             
             Context:
             {context_text}
