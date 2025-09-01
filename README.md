@@ -326,6 +326,108 @@ for i in range(0, len(documents), batch_size):
     vectorstore.persist()
 ```
 
+### 🔧 Helper Script: create_embeddings.py
+
+The repository includes a powerful helper script that simplifies creating vector embeddings from your course content. This script allows you to easily convert .md or .txt files into vector embeddings and store them in a ChromaDB database.
+
+#### Features
+
+- **Multiple File Support**: Process multiple .md or .txt files at once
+- **Customizable Chunking**: Adjust chunk sizes and overlap for optimal performance
+- **GPU/CPU Support**: Automatically detect and use GPU acceleration when available
+- **Database Management**: Create new databases or update existing ones
+- **Error Handling**: Comprehensive error handling with user-friendly feedback
+- **Testing**: Built-in database testing with sample queries
+
+#### Basic Usage
+
+```bash
+# Create embeddings from a single file
+python create_embeddings.py course_material.md
+
+# Process multiple files
+python create_embeddings.py file1.md file2.txt file3.md
+
+# Process all markdown files in a directory
+python create_embeddings.py *.md
+```
+
+#### Advanced Usage
+
+```bash
+# Use custom chunk size and enable GPU
+python create_embeddings.py --chunk-size 1000 --use-gpu files/*.md
+
+# Specify custom database location
+python create_embeddings.py --db-path ./my_vectordb files/*.txt
+
+# Use a different embedding model
+python create_embeddings.py --model sentence-transformers/all-mpnet-base-v2 *.md
+
+# Create with custom collection name
+python create_embeddings.py --collection-name "week2_materials" week2/*.md
+```
+
+#### Command Line Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--model` | HuggingFace model name for embeddings | `all-MiniLM-L6-v2` |
+| `--chunk-size` | Size of text chunks for processing | `500` |
+| `--chunk-overlap` | Overlap between text chunks | `50` |
+| `--use-gpu` | Use GPU for embedding generation if available | `false` |
+| `--db-path` | Directory to store the vector database | `./course_vectordb` |
+| `--collection-name` | Name of the vector database collection | `course_materials` |
+| `--test-query` | Query to test the database with | `"digital strategy"` |
+| `--no-test` | Skip testing the vector database after creation | `false` |
+
+#### Integration with DAIS_Week1_RAG.py
+
+After creating your vector database with the helper script, update the `PERSIST_DIRECTORY` variable in `DAIS_Week1_RAG.py`:
+
+```python
+# Update this line in DAIS_Week1_RAG.py
+PERSIST_DIRECTORY = "./your_custom_vectordb"  # Path from --db-path option
+```
+
+#### Example Workflow
+
+1. **Prepare your content**: Organize course materials into .md or .txt files
+2. **Create embeddings**: Use the helper script to process your files
+3. **Update the app**: Point the Streamlit app to your new database
+4. **Test**: Run the app and verify that your content is searchable
+
+```bash
+# Step 1: Create embeddings from your course materials
+python create_embeddings.py --chunk-size 800 --use-gpu course_materials/*.md
+
+# Step 2: Update DAIS_Week1_RAG.py to use your database
+# PERSIST_DIRECTORY = "./course_vectordb"
+
+# Step 3: Run the Streamlit app
+streamlit run DAIS_Week1_RAG.py
+```
+
+#### Troubleshooting the Helper Script
+
+**Issue 1: Model Download Errors**
+```bash
+# Ensure you have internet connectivity for first-time model download
+# Models are cached locally after first download
+```
+
+**Issue 2: Memory Issues with Large Files**
+```bash
+# Use smaller chunk sizes for large files
+python create_embeddings.py --chunk-size 300 large_file.md
+```
+
+**Issue 3: GPU Issues**
+```bash
+# Force CPU usage if GPU issues occur
+python create_embeddings.py large_file.md  # GPU detection is automatic
+```
+
 ### Best Practices for Course Material Implementation
 
 1. **Content Preparation**:
