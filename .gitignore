@@ -21,9 +21,15 @@ wheels/
 .installed.cfg
 *.egg
 
+
 # PyInstaller
 *.manifest
 *.spec
+
+# Virtual environments
+venv/
+env/
+ENV/
 
 # Installer logs
 pip-log.txt
@@ -58,6 +64,12 @@ venv.bak/
 
 # Streamlit
 .streamlit/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # OS generated files
 .DS_Store
