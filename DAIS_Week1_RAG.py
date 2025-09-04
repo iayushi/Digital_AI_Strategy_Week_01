@@ -81,13 +81,13 @@ with st.expander("💡 Sample Questions", expanded=False):
         if st.button("🎭 Marvel Fan Explanation", key="q1"):
             if 'sample_question' not in st.session_state:
                 st.session_state.sample_question = None
-            st.session_state.sample_question = "How are IS, Digital Platform, AI, and Business Strategy related? Explain to a Marvel fan."
+            st.session_state.sample_question = "How are content in this session related to Digital Platform, AI, and Business Strategy ? Explain to a Marvel fan."
     
     with col2:
-        if st.button("🦾 Digital Transformation Avenger", key="q2"):
+        if st.button("🦾 Black Panther and IT", key="q2"):
             if 'sample_question' not in st.session_state:
                 st.session_state.sample_question = None
-            st.session_state.sample_question = "If the Digital Transformation was an Avenger, which one would it be and why?"
+            st.session_state.sample_question = "If the some advance IT, like genAI, was available only to residents of Wakanda will it matter or not? "
     
     # Simple Explanations
     st.markdown("**👶 Simple Explanations**")
@@ -97,13 +97,13 @@ with st.expander("💡 Sample Questions", expanded=False):
         if st.button("🧒 Explain to a 5-year-old", key="q3"):
             if 'sample_question' not in st.session_state:
                 st.session_state.sample_question = None
-            st.session_state.sample_question = "Explain the learnings from this course to a five year old"
+            st.session_state.sample_question = "Explain the learnings from this session to a five year old"
     
     with col4:
         if st.button("🦸‍♂️ Superhero Team Powers", key="q4"):
             if 'sample_question' not in st.session_state:
                 st.session_state.sample_question = None
-            st.session_state.sample_question = "If Business Strategy was a superhero team, what would be its superpowers?"
+            st.session_state.sample_question = "If any IT was a super power, what could happen to challenge this superpower?"
     
     # Analogies
     st.markdown("**🔗 Analogies**")
@@ -113,13 +113,13 @@ with st.expander("💡 Sample Questions", expanded=False):
         if st.button("🧱 LEGO Masterpiece", key="q5"):
             if 'sample_question' not in st.session_state:
                 st.session_state.sample_question = None
-            st.session_state.sample_question = "Compare AI Strategy to building a LEGO masterpiece"
+            st.session_state.sample_question = "Compare digital and AI Strategy based on this session readings to building a LEGO masterpiece"
     
     with col6:
         if st.button("🎮 Video Game Platforms", key="q6"):
             if 'sample_question' not in st.session_state:
                 st.session_state.sample_question = None
-            st.session_state.sample_question = "How would you explain Digital Platforms to someone who loves video games?"
+            st.session_state.sample_question = "How would you explain value generation from IT to someone who loves video games?"
 
 model = None
 
