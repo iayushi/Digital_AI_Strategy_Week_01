@@ -69,6 +69,58 @@ PERSIST_DIRECTORY = "./Week_1_31Aug2025"
 
 ### --------------------
 
+# Sample Questions Section - Available without API key
+with st.expander("💡 Sample Questions", expanded=False):
+    st.markdown("### Get started with these example questions:")
+    
+    # Pop Culture References
+    st.markdown("**🦸 Pop Culture References**")
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        if st.button("🎭 Marvel Fan Explanation", key="q1"):
+            if 'sample_question' not in st.session_state:
+                st.session_state.sample_question = None
+            st.session_state.sample_question = "How are IS, Digital Platform, AI, and Business Strategy related? Explain to a Marvel fan."
+    
+    with col2:
+        if st.button("🦾 Digital Transformation Avenger", key="q2"):
+            if 'sample_question' not in st.session_state:
+                st.session_state.sample_question = None
+            st.session_state.sample_question = "If the Digital Transformation was an Avenger, which one would it be and why?"
+    
+    # Simple Explanations
+    st.markdown("**👶 Simple Explanations**")
+    col3, col4 = st.columns(2)
+    
+    with col3:
+        if st.button("🧒 Explain to a 5-year-old", key="q3"):
+            if 'sample_question' not in st.session_state:
+                st.session_state.sample_question = None
+            st.session_state.sample_question = "Explain the learnings from this course to a five year old"
+    
+    with col4:
+        if st.button("🦸‍♂️ Superhero Team Powers", key="q4"):
+            if 'sample_question' not in st.session_state:
+                st.session_state.sample_question = None
+            st.session_state.sample_question = "If Business Strategy was a superhero team, what would be its superpowers?"
+    
+    # Analogies
+    st.markdown("**🔗 Analogies**")
+    col5, col6 = st.columns(2)
+    
+    with col5:
+        if st.button("🧱 LEGO Masterpiece", key="q5"):
+            if 'sample_question' not in st.session_state:
+                st.session_state.sample_question = None
+            st.session_state.sample_question = "Compare AI Strategy to building a LEGO masterpiece"
+    
+    with col6:
+        if st.button("🎮 Video Game Platforms", key="q6"):
+            if 'sample_question' not in st.session_state:
+                st.session_state.sample_question = None
+            st.session_state.sample_question = "How would you explain Digital Platforms to someone who loves video games?"
+
 model = None
 
 if api_key:
@@ -182,13 +234,23 @@ if model:
     for msg in st.session_state.messages:
         st.chat_message(msg["role"]).write(msg["content"])
 
+    # Handle sample question selection
+    pending_question = None
+    if 'sample_question' in st.session_state and st.session_state.sample_question:
+        pending_question = st.session_state.sample_question
+        st.session_state.sample_question = None  # Clear it after using
+    
     user_input = st.chat_input("Ask a question...")
     if user_input:
-        st.session_state.messages.append({"role": "user", "content": user_input})
-        st.chat_message("user").write(user_input)
+        pending_question = user_input
+    
+    if pending_question:
+        # Add the question to messages
+        st.session_state.messages.append({"role": "user", "content": pending_question})
+        st.chat_message("user").write(pending_question)
 
         try:
-            answer = chain.invoke({"question": user_input})
+            answer = chain.invoke({"question": pending_question})
             st.session_state.messages.append({"role": "assistant", "content": answer})
             st.chat_message("assistant").write(answer)
         except Exception as e:
@@ -196,4 +258,9 @@ if model:
             st.error(traceback.format_exc())
 
 else:
+    # Handle sample question selection even without API key
+    if 'sample_question' in st.session_state and st.session_state.sample_question:
+        st.info(f"You selected: '{st.session_state.sample_question}' - Please enter your API key above to get an answer!")
+        st.session_state.sample_question = None  # Clear it after showing
+    
     st.warning("Please enter your API key and choose a provider.", icon="⚠")
