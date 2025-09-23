@@ -129,21 +129,24 @@ if api_key:
             model = ChatOpenAI(
                 api_key=api_key,
                 model=model_name or "gpt-4o-mini",
-                temperature=0.7
+                temperature=0.7,
+                streaming=True
             )
 
         elif provider == "Together":
             model = ChatTogether(
                 together_api_key=api_key,
                 model=model_name or "mistralai/Mistral-7B-Instruct-v0.2",
-                temperature=0.7
+                temperature=0.7,
+                streaming=True
             )
 
         elif provider == "Groq":
             model = ChatGroq(
                 groq_api_key=api_key,
                 model_name=model_name or "llama-3.1-8b-instant",
-                temperature=0.7
+                temperature=0.7,
+                streaming=True
             )
 
         elif provider == "Hugging Face":
@@ -158,7 +161,8 @@ if api_key:
             model = ChatAnthropic(
                 anthropic_api_key=api_key,
                 model_name=model_name or "claude-3-haiku-20240307",
-                temperature=0.7
+                temperature=0.7,
+                streaming=True
             )
 
         elif provider == "Perplexity" and api_key.startswith("pplx-"):
