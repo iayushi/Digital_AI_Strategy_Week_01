@@ -250,9 +250,12 @@ if model:
         st.chat_message("user").write(pending_question)
 
         try:
-            answer = chain.invoke({"question": pending_question})
-            st.session_state.messages.append({"role": "assistant", "content": answer})
-            st.chat_message("assistant").write(answer)
+            def _token_generator():
+                for chunk in chain.stream({"question": pending_question}):
+                    yield chunk
+
+            final_text = st.chat_message("assistant").write_stream(_token_generator())
+            st.session_state.messages.append({"role": "assistant", "content": final_text})
         except Exception as e:
             st.error(f"Error running RAG chain: {e}")
             st.error(traceback.format_exc())
