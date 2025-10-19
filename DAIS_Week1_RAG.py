@@ -14,7 +14,7 @@ from langchain_core.documents import Document
 from langchain_classic.retrievers.multi_vector import MultiVectorRetriever
 # from langchain_community.retrievers.multi_vector import MultiVectorRetriever
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain_together import ChatTogether
+# from langchain_together import ChatTogether
 from langchain_groq import ChatGroq
 from langchain_community.chat_models import ChatHuggingFace
 #from langchain_community.chat_models import ChatPerplexity
@@ -40,7 +40,8 @@ st.subheader ("Week 1: Foundations of IS, IT, Digital Platform, AI, and Business
 # Sidebar: Choose provider & keys
 provider = st.sidebar.selectbox(
     "Choose LLM Provider:",
-    ("OpenAI", "Together", "Groq", "Hugging Face", "Anthropic", "Perplexity")
+    ("OpenAI", # "Together", 
+     "Groq", "Hugging Face", "Anthropic", "Perplexity")
 )
 api_key = st.sidebar.text_input(f"{provider} API Key", type="password")
 model_name = st.sidebar.text_input("Model name (optional)", "")
@@ -136,12 +137,12 @@ if api_key:
                 temperature=0.7
             )
 
-        elif provider == "Together":
-            model = ChatTogether(
-                together_api_key=api_key,
-                model=model_name or "mistralai/Mistral-7B-Instruct-v0.2",
-                temperature=0.7
-            )
+        #elif provider == "Together":
+        #    model = ChatTogether(
+        #        together_api_key=api_key,
+        #        model=model_name or "mistralai/Mistral-7B-Instruct-v0.2",
+        #        temperature=0.7
+        #    )
 
         elif provider == "Groq":
             model = ChatGroq(
