@@ -17,6 +17,4 @@ sentence-transformers
 langchain-huggingface
 torch
 langchain_classic
-#tiktoken
-#faiss-cpu
 pydantic
