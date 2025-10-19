@@ -8,7 +8,8 @@ sys.modules["sqlite3"] = pysqlite3
 from langchain_community.vectorstores import Chroma
 # from langchain.storage import InMemoryStore
 from langchain_core.stores import InMemoryStore
-from langchain.schema import Document
+# from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain.retrievers.multi_vector import MultiVectorRetriever
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_together import ChatTogether
