@@ -15,6 +15,6 @@ chromadb
 sentence-transformers
 langchain-huggingface
 torch
-tiktoken
-faiss-cpu
-pydantic
+#tiktoken
+#faiss-cpu
+#pydantic
