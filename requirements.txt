@@ -9,6 +9,7 @@ langchain-anthropic
 langchain-together
 langchain-perplexity
 langchain-community
+langchain_community
 langchain-groq
 chromadb
 sentence-transformers
@@ -16,3 +17,4 @@ langchain-huggingface
 torch
 tiktoken
 faiss-cpu
+pydantic
