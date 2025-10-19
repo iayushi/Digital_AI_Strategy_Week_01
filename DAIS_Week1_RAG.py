@@ -26,7 +26,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from langchain_huggingface import HuggingFaceEmbeddings
 from sentence_transformers import SentenceTransformer
-from langchain.schema import Document
+# from langchain.schema import Document
+from langchain_classic.schema import Document
 import traceback
 from operator import itemgetter
 import torch
