@@ -11,7 +11,8 @@ from langchain_core.stores import InMemoryStore
 # from langchain.schema import Document
 from langchain_core.documents import Document
 # from langchain.retrievers.multi_vector import MultiVectorRetriever
-from langchain_community.retrievers.multi_vector import MultiVectorRetriever
+from langchain_classic.retrievers.multi_vector import MultiVectorRetriever
+# from langchain_community.retrievers.multi_vector import MultiVectorRetriever
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_together import ChatTogether
 from langchain_groq import ChatGroq
