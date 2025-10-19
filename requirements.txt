@@ -17,4 +17,3 @@ sentence-transformers
 langchain-huggingface
 torch
 langchain_classic
-pydantic
