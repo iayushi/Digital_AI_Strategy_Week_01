@@ -16,7 +16,7 @@ from langchain_classic.retrievers.multi_vector import MultiVectorRetriever
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 # from langchain_together import ChatTogether
 from langchain_groq import ChatGroq
-from langchain_community.chat_models import ChatHuggingFace
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint, HuggingFaceEmbeddings
 #from langchain_community.chat_models import ChatPerplexity
 from langchain_anthropic import ChatAnthropic
 from langchain_perplexity import ChatPerplexity
